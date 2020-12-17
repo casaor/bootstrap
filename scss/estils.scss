@@ -1,0 +1,492 @@
+/* VARIABLES*/
+
+$color1: #D0F4D7;
+$color2: #A2F6AE;
+$color3: #97E6A3;
+$color4: #84CC8F;
+$color5: #6CA674;
+$color6: #426648;
+$color7: #35533a; 
+
+$blanc: #ffffff;
+$negre: #000000;
+$gris: #868686;
+$grisFons: #e0e0e0;
+$grisMig: #b3b3b3;
+$grisFosc: #585858;
+
+$heightNav: 80px;
+
+$alineaCentre: center;
+$alineaEsquerra: left;
+
+/* MIXINS*/
+
+@mixin botonsNav ($colorFons,$colorHover) {
+    background-color: $colorFons;
+    color: $blanc;
+    font-size: 1.3rem;
+    text-align: center;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+
+    &:hover {
+        background-color: $colorHover; 
+    }
+}
+
+@mixin escollir ($zIndex, $alineaText) {
+    background-color: $grisFons !important;
+    padding: 3% !important;
+    z-index: ($zIndex);
+    text-align: ($alineaText);
+    width: 100%;
+
+    a {
+        color: $gris;
+        font-weight: 600;
+        font-size: 1.1rem;Fon
+
+        &:hover {
+            color: $grisFosc !important;
+        }
+    }
+}
+
+@mixin peu ($colBack,$colText,$midaLletra,$colHov) {
+    background-color: $colBack;
+    color: $colText;
+    font-size: $midaLletra;
+    text-align: center;
+    display: flex;
+    align-items: center !important;
+    justify-content: center !important;
+
+    &:hover {
+        background-color: $colHov; 
+    }
+}
+
+/* GENERAL*/
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+h1,h2,h3, h1 span {
+    font-family: 'Merriweather', serif;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.row {
+    margin: 0 !important;
+    width: 100%;
+}
+
+.btn {
+    margin-top: 2%;
+    border: none;
+    background-color: $color2 !important;
+    text-transform: uppercase;
+
+    &:hover {
+        background-color: $color3 !important; 
+    }
+}
+
+/* SECCIONS */
+
+.navbar {
+    /*box-shadow: 0 2px 4px 0 rgba(66, 102, 72, 0.2);*/
+    height: $heightNav;
+    opacity: 0.97;
+
+    .navbar-brand {
+        background-color: $color1;
+        display: flex;
+        align-items: center !important;
+
+        .logo-brand {
+            max-width: 80%;
+        }
+    }
+
+    .caixa {
+        background-color: $color2;
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+
+        .form-inline {
+            width: 100%;
+            height: 50%;
+
+            input {
+                width: 100%;
+
+            }
+            
+            .btn-success {
+                background-color: transparent !important;
+                color: $color6;
+                border: none;
+                padding: 0; // top right bottom left
+                margin: 0;
+                position: absolute;
+                z-index: 10;
+                right: 7%;
+            }
+        }
+    }
+
+    #perfil{
+        @include botonsNav ($color3,$color6);
+    }
+
+    #botiga{
+        @include botonsNav ($color4,$color6);
+    }
+    
+    #burger {
+        @include botonsNav ($color5,$color6);
+        border-radius: 0 !important;
+    }
+    
+    #menu {
+        background-color: $color5 !important;
+        padding: 3% !important;
+
+        a {
+            color: $blanc;
+            font-size: 2rem;
+            font-family: 'Merriweather', serif;
+        }
+        
+    }
+   
+}
+
+.portada {
+    margin-top: $heightNav;
+    display: flex;
+    align-items: center;
+
+    img {
+        object-fit: cover;
+        width: 100%;
+    }
+
+    h1 {
+        color: $blanc;
+        font-size: 4.3rem;
+        position: absolute;
+        margin-left: 4%;
+    }
+}
+
+.filtres{
+    height: 90px;
+    width: 100%;
+
+    .filtre {
+        display: flex;
+        align-items: center !important;
+        justify-content: center !important;
+        text-transform: uppercase;
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+        color: $grisFosc;
+        border: none !important;
+        border-radius: 0 !important;
+    
+
+        &:hover {
+            background-color: $grisMig;
+        } 
+    }
+
+    .list-group {
+        -webkit-flex-direction: row !important;
+        -ms-flex-direction: row !important;
+        flex-direction: row !important;
+        flex-flow: row wrap;
+    }
+
+    .list-group-item {
+        background-color: transparent !important;
+        border: none !important;
+    }
+
+    .noActiu {
+        background-color: $grisFons;
+    }
+
+    #alfabet {
+        $zIndexfil: 20;
+        @include escollir ($zIndexfil,$alineaCentre);
+        
+    }
+
+    #categoria {
+        $zIndexcat: 21;
+        @include escollir ($zIndexcat,$alineaEsquerra);
+    }
+
+    #negoci {
+        $zIndexneg: 22;
+        @include escollir ($zIndexneg,$alineaEsquerra);
+    }
+
+}
+
+.llibres {
+
+    .card {
+        border: none !important;
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12), .3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+
+        &:hover {
+            background-color: $color1; 
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 100%; 
+            height: 350px;
+          }
+
+        .card-body {
+            background-color: rgba(210, 244, 217,0.5);
+
+            h3 {
+                font-size: 1rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            .badge {
+                font-size: 0.9rem;
+                background-color: $color3;
+            }
+
+        }
+
+    }
+
+}
+
+.signUp {
+    background-color: $grisFons;
+    display: flex;
+    align-items: center !important;
+
+    &:hover {
+       background-color: $color1;
+    }
+}
+
+
+.llibresRec {
+    flex-flow: row wrap;
+    margin: 0 !important;
+    
+    .card {
+        border: none !important;
+        transition: .3s transform cubic-bezier(.155,1.105,.295,1.12), .3s -webkit-transform cubic-bezier(.155,1.105,.295,1.12);
+        width: 30%;
+
+        &:hover {
+            background-color: $color1; 
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 100%;
+            height: 350px;
+          }
+
+        .card-body {
+            background-color: rgba(210, 244, 217,0.5);
+            padding: 6% !important;
+
+            h3 {
+                font-size: 0.9rem;
+            }
+
+            p {
+                font-size: 0.8rem;
+            }
+
+            .badge {
+                font-size: 0.9rem;
+                background-color: $color3;
+            }
+
+        }
+
+    }
+}
+
+.card-llibreria{
+
+    .documenta {
+        width: 100%;
+    }
+
+    .card-body {
+        background-color: rgba(224, 224, 224,0.6);
+    }
+
+    a {
+        color: $color5;
+        text-decoration: underline !important;
+
+        &:hover {
+            color: $color6;
+        }
+    }
+}
+
+footer {
+    height: 50px !important;
+    display: flex;
+    align-items: center !important;
+
+    $mida1: 0.9rem;
+    $mida2: 1rem;
+
+    #marca {
+        @include peu ($color1,$negre,$mida1,$color5)
+    }
+
+    #termes {
+        @include peu ($color2,$negre,$mida1,$color5)
+    }
+
+    #contacte {
+        @include peu ($color3,$negre,$mida1,$color5)
+    }
+
+    #twitter {
+        @include peu ($color4,$blanc,$mida2,$color7)
+    }
+
+    #instagram {
+        @include peu ($color5,$blanc,$mida2,$color7)
+    }
+
+    #youtube {
+        @include peu ($color6,$blanc,$mida2,$color7)
+    }
+
+}
+
+/* RESPONSIVE*/
+
+@media only screen and (max-device-width: 767px) {
+    /* Per a mòbils: */
+
+    #menu {
+
+        i {
+            font-size: 1.2rem !important;
+        }
+        a {
+            font-size: 1.6rem !important;
+            margin-left: 4% !important;
+        }
+        
+    }
+
+    .portada {
+    
+        img {
+        height: 500px;
+        width: 100%;
+        }
+
+        h1 {
+            font-size: 3rem !important; // no s'activa!!
+            width: 90%;
+        }
+    }
+
+    .filtre {
+        font-size: 0.9rem !important;
+        line-height: 1.2 !important;
+    }
+
+    .nav-link {
+        font-size: 0.9rem !important; 
+    }
+
+    .llibresRec {
+        
+        .card {
+            width: 80% !important;
+    
+            img {
+                width: 100%;
+                height: 360px;
+              }
+    
+        }
+    }  
+    
+}
+
+
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1200px) {
+    /* Per a tablets: */
+
+    #menu {
+
+        i {
+            font-size: 1.2rem !important;
+        }
+        a {
+            font-size: 1.6rem !important;
+            margin-left: 2% !important;
+        }
+        
+    }
+
+    .portada{
+
+        img {
+            height: 600px;
+            width: 100%;
+
+            h1 {
+                font-size: 3rem !important; // no s'activa!!
+            }
+        }
+    }
+
+    .filtre {
+        font-size: 1rem !important;
+    }
+
+    .llibresRec {
+        
+        .card {
+            width: 30% !important;
+    
+            img {
+                width: 100%;
+                height: 150px;
+              }
+    
+        }
+    }  
+}
